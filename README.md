@@ -1,5 +1,5 @@
 # TtGen-OMSI2
-Lightweight timetable script generator for OMSI 2. Available either as a OMSI plugin or standalone executable.
+Lightweight timetable script generator for OMSI 2. Available either as an OMSI plugin or standalone executable.
 ## Usage
 ### Creating timetables
 Timetables should be placed in `OMSI 2\Vehicles\Timetables`, distinguishable by their unique filenames with an XML extension.
