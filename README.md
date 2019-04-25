@@ -39,6 +39,37 @@ Structure example:
   </Linie>
 </Fahrplan>
 ```
-### Referencing scripts
+#### Upcoming changes:
+- [ ] Allow for multiple days for a single _Umlauf_; future use: `<Umlauf Tag="1, 2, 3">`
+- [ ] Holiday table
+### Integrating scripts
+Currently, the following macros can be used:
+- `Timetable_Init`: Initialize the script; should be called once from the `{init}` block.
 
+- `GetKursInfoByID`: Get departure time and destination code based on Linie, Umlauf and Kurs indices.
+  
+  Input:
+  - `reg0`: Liniennummer
+  - `reg1`: Umlaufnummer
+  - `reg2`: Kursnummer
+  
+  Output:
+  - `reg3`: Destination code
+  - `reg4`: Departure time
+  
+- `GetKursByDepTime`: Get the upcoming Kurs index for a given Linie and Umlauf.
+  
+  Input:
+  - `reg0`: Liniennummer
+  - `reg1`: Umlaufnummer
+  
+  Output:
+  - `reg2`: Kursnummer
+  - `reg3`: Destination code
+  - `reg4`: Departure time
+  - `reg5`: Kursanzahl
+#### Upcoming changes:
+- [ ] Use named variables instead of output registers;
+- [ ] Save multiple nearest _Kurs_ indices at once to reduce the number of necessary macro calls. 
 ## Compiling the code
+__TBA__ - either use Lazarus/FreePascal or grab the binaries from the most recent release.
