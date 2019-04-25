@@ -47,6 +47,8 @@ type generic TTimetableNode<T : TTimetableItem> = class
     class procedure RotateRight(var Y: specialize TTimetableNode<T>); static;
     class function Count(var Node: specialize TTimetableNode<T>): Integer; static;
     class function GetMin(var Node: specialize TTimetableNode<T>): T; static;
+    class function IndexOf(var Node: specialize TTimetableNode<T>; Id: Integer): Integer;
+    class function GetIndexth(var Node: specialize TTimetableNode<T>; N: Integer): T;
   public
     Right: specialize TTimetableNode<T>;
     Left: specialize TTimetableNode<T>; 
@@ -68,6 +70,8 @@ type generic TTimetableTree<T : TTimetableItem> = class
     function Count: Integer;
     procedure Insert(Item: T);
     destructor Destroy; override;
+    function IndexOf(Id: Integer): Integer;
+    function GetIndexth(Index: Integer): T;
 end;
 
 type TKurs = class(TTimetableItem)
@@ -294,6 +298,30 @@ begin;
     Result := GetHeight(Node.Left) - GetHeight(Node.Right);
 end;
 
+class function TTimetableNode.IndexOf(var Node: specialize TTimetableNode<T>; Id: Integer): Integer;
+begin;
+  if (Node = nil) then
+    Result := -1
+  else if(Id < Node.Item.Id) then
+    Result := IndexOf(Node.Left, Id)
+  else if(Id > Node.Item.Id) then
+    Result := IndexOf(Node.Right, Id + Count(Node.Left) + 1)
+  else
+    Result := Id + Count(Node.Left);
+end;
+
+class function TTimetableNode.GetIndexth(var Node: specialize TTimetableNode<T>; N: Integer): T;
+begin;
+  if (Node = nil) then
+    Result := nil
+  else if(Count(Node.Left) > N) then
+    Result := GetIndexth(Node.Left, N)
+  else if(Count(Node.Left) < N) then
+    Result := GetIndexth(Node.Right, N - Count(Node.Left) - 1)
+  else
+    Result := Node.Item;
+end;
+
 {%Endregion}
 
 {%Region Constructors for Timetable AVL Tree}
@@ -408,6 +436,16 @@ end;
 function TTimetableTree.Find(Key: Integer): T;
 begin;
   Result := TNode.Find(Root, Key);
+end;
+
+function TTimetableTree.IndexOf(Id: Integer): Integer;
+begin;
+  Result := TNode.IndexOf(Root, Id);
+end;
+
+function TTimetableTree.GetIndexth(Index: Integer): T;
+begin;
+  Result := TNode.GetIndexth(Root, Index);
 end;
 
 {%Endregion}
