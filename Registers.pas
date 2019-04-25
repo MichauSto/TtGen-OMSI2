@@ -27,8 +27,8 @@ const GetKursInfoByID = 'GetKursInfoByID';
 const GetKursByDepTime = 'GetKursByDepTime';
 const TimetableInit = 'Timetable_Init';
 
-const VarKursID = 'Kurs_Index';  
-const VarKursCount = 'Kurs_Anzahl';
+const VarKursID = 'Kurs_ID';
+const VarKursCount = 'Kurs_Count';
 
 function CodeVar(I: Integer): string;
 function DepartureVar(I: Integer): string;
@@ -40,22 +40,22 @@ implementation
 
 function CodeVar(I: Integer): string;
 begin;
-  Result := 'Kurs_' + IntToStr(I) + '_Code';
+  Result := 'K' + IntToStr(I - RangeVarMin) + '_C';
 end;
 
 function CodeVar: string;
 begin;
-  Result := 'Kurs_[' + IntToStr(RangeVarMin) + ':' + IntToStr(RangeVarMax) + ']_Code';
+  Result := 'K[' + IntToStr(0) + ':' + IntToStr(-RangeVarMin) + ':' + IntToStr(RangeVarMax - RangeVarMin) + ']_C';
 end;
 
 function DepartureVar(I: Integer): string;
 begin;
-  Result := 'Kurs_' + IntToStr(I) + '_Departure';
+  Result := 'K' + IntToStr(I - RangeVarMin) + '_D';
 end;
 
 function DepartureVar: string;
 begin;
-  Result := 'Kurs_[' + IntToStr(RangeVarMin) + ':' + IntToStr(RangeVarMax) + ']_Departure';
+  Result := 'K[' + IntToStr(0) + ':' + IntToStr(-RangeVarMin) + ':'+ IntToStr(RangeVarMax - RangeVarMin) + ']_D';
 end;
 
 end.
