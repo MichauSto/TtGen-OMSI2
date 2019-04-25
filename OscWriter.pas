@@ -8,6 +8,7 @@ uses
   Classes, SysUtils, StrUtils;
 
 type TOscVarType = (StringVar, SystemVar, FloatVar);
+type TOscMacroType = (LocalMacro, SystemMacro);
 
 type TOscWriter = class
     private
@@ -24,6 +25,7 @@ type TOscWriter = class
       procedure EndIf;
       procedure Comment(Content: string); 
       procedure Comment(Reg: Integer; Content: string);
+	  procedure CallMacro(MacroType: TOscMacroType; Name: string);
       procedure LoadVar(VarType: TOscVarType; Name: string);
       procedure SaveVar(VarType: TOscVarType; Name: string);
       procedure LoadReg(Number: Integer);
@@ -39,6 +41,7 @@ end;
 
 implementation
 const OscVarTypeStr: array[TOscVarType] of string = ('$', 'S', 'L');
+const OscMacroTypeStr: array[TOscMacroType] of string = ('L', 'V');
 
 procedure TOscWriter.NewLine;
 begin
@@ -105,6 +108,11 @@ end;
 procedure TOscWriter.Comment(Reg: Integer; Content: string);
 begin
   Comment('  reg' + IntToStr(Reg) + ': ' + Content);
+end;
+
+procedure TOscWriter.CallMacro(MacroType: TOscMacroType; Name: string);
+begin
+  WriteToken('(M.' + OscMacroTypeStr[MacroType] + '.' + Name + ')');
 end;
 
 procedure TOscWriter.LoadVar(VarType: TOscVarType; Name: string);

@@ -73,7 +73,7 @@ begin
   if (FahrplanTree.GetRoot <> nil) then
   begin
     Writer.WriteConst(TTGlobalString);
-    Writer.WriteOp('(M.V.GetDepotStringGlobal)');
+    Writer.CallMacro(SystemMacro, 'GetDepotStringGlobal');
     WriteFahrplanNode(Writer, FahrplanTree, 0);
   end;
   Writer.EndMacro;
