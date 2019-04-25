@@ -1,0 +1,7 @@
+**/backup
+**/lib
+*.dll
+*.exe
+*.osc
+*.xml
+*.lps
