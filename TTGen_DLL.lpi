@@ -33,21 +33,16 @@
     </RequiredPackages>
     <Units Count="2">
       <Unit0>
-        <Filename Value="TTGen_DLL.pas"/>
+        <Filename Value="TTGen_DLL.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
-      <Unit1>
-        <Filename Value="ttgen_base.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="TTGen_Base"/>
-      </Unit1>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="CN40_TTGen"/>
+      <Filename Value="MSTO_TTGen"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
