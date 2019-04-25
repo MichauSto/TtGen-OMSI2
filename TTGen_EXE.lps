@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="TTGen_EXE.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="27"/>
+        <CursorPos X="127" Y="37"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="timetableloader.pas"/>
+        <UnitName Value="TimetableLoader"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="33" Y="8"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="oscwriter.pas"/>
+        <UnitName Value="OscWriter"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="146"/>
+        <CursorPos X="84" Y="162"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="TTGen_EXE.lpr"/>
+        <Caret Line="29" Column="9" TopLine="19"/>
+      </Position1>
+      <Position2>
+        <Filename Value="timetableloader.pas"/>
+        <Caret Line="8" Column="33"/>
+      </Position2>
+      <Position3>
+        <Filename Value="TTGen_EXE.lpr"/>
+        <Caret Line="16" Column="3"/>
+      </Position3>
+      <Position4>
+        <Filename Value="TTGen_EXE.lpr"/>
+        <Caret Line="37" Column="127" TopLine="27"/>
+      </Position4>
+      <Position5>
+        <Filename Value="oscwriter.pas"/>
+        <Caret Line="155" Column="121" TopLine="146"/>
+      </Position5>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

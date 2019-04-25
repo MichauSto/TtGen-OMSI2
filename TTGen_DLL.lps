@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="8">
+      <Unit0>
+        <Filename Value="TTGen_DLL.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="26" Y="12"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="ttgen_base.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TTGen_Base"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="timetableloader.pas"/>
+        <UnitName Value="TimetableLoader"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="31"/>
+        <CursorPos X="33" Y="8"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="gengetkursbydep.pas"/>
+        <UnitName Value="GenGetKursByDep"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="257"/>
+        <CursorPos X="5" Y="100"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="gengetkursvisitor.pas"/>
+        <UnitName Value="GenGetKursVisitor"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="285"/>
+        <CursorPos X="20" Y="97"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="oscwriter.pas"/>
+        <UnitName Value="OscWriter"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="23" Y="101"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="C:\Lazarus\fpc\3.0.4\source\rtl\win\sysutils.pp"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="TTGen.lpr"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+    </Units>
+    <JumpHistory Count="8" HistoryIndex="7">
+      <Position1>
+        <Filename Value="ttgen_base.pas"/>
+        <Caret Line="8" Column="20"/>
+      </Position1>
+      <Position2>
+        <Filename Value="TTGen_DLL.pas"/>
+        <Caret Line="4" Column="22"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ttgen_base.pas"/>
+        <Caret Line="9" Column="70"/>
+      </Position3>
+      <Position4>
+        <Filename Value="TTGen_DLL.pas"/>
+        <Caret Line="7" Column="33"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ttgen_base.pas"/>
+        <Caret Line="74" Column="5" TopLine="51"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ttgen_base.pas"/>
+        <Caret Line="9" Column="71"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ttgen_base.pas"/>
+        <Caret Line="13" Column="17"/>
+      </Position7>
+      <Position8>
+        <Filename Value="TTGen_DLL.pas"/>
+        <Caret Line="4" Column="22"/>
+      </Position8>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
