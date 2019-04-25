@@ -72,4 +72,6 @@ Currently, the following macros can be used:
 - [ ] Use named variables instead of output registers;
 - [ ] Save multiple nearest _Kurs_ indices at once to reduce the number of necessary macro calls. 
 ## Compiling the code
-__TBA__ - either use Lazarus/FreePascal or grab the binaries from the most recent release.
+The project files have been created with [Lazarus 2.0.2](https://www.lazarus-ide.org/index.php?page=downloads) and compiled with [FreePascal 3.0.4](https://www.freepascal.org/download.html). For DLL plugins OMSI __requires__ win32/i386 as build target.
+- `TTGen_DLL.lpr` is the main project file for the DLL plugin, whereas
+- `TTGen_EXE.lpr` - standalone executable.
