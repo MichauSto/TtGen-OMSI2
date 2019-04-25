@@ -25,7 +25,8 @@ type TOscWriter = class
       procedure EndIf;
       procedure Comment(Content: string); 
       procedure Comment(Reg: Integer; Content: string);
-	  procedure CallMacro(MacroType: TOscMacroType; Name: string);
+      procedure Comment(Variable: String; Content: string);
+      procedure CallMacro(MacroType: TOscMacroType; Name: string);
       procedure LoadVar(VarType: TOscVarType; Name: string);
       procedure SaveVar(VarType: TOscVarType; Name: string);
       procedure LoadReg(Number: Integer);
@@ -108,6 +109,11 @@ end;
 procedure TOscWriter.Comment(Reg: Integer; Content: string);
 begin
   Comment('  reg' + IntToStr(Reg) + ': ' + Content);
+end;
+
+procedure TOscWriter.Comment(Variable: string; Content: string);
+begin
+  Comment('  ' + Variable + ': ' + Content);
 end;
 
 procedure TOscWriter.CallMacro(MacroType: TOscMacroType; Name: string);

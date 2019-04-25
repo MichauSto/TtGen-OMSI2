@@ -10,7 +10,8 @@ uses
 procedure GenGetKursByDepTree(Writer: TOscWriter; Tree: specialize TTimetableTree<TFahrplan>);
 
 type TGenGetKursByDepVisitor = class(TTimetableVisitor)
-private
+private 
+  Iter: Integer;
   procedure FahrplanTreeHelper(Node: specialize TTimetableNode<TLinie>);
   procedure FahrtagTreeHelper(Node: specialize TTimetableNode<TAbfahrt>; Tree: specialize TTimetableTree<TKurs>);
   procedure LinieTreeHelper(Node: specialize TTimetableNode<TUmlauf>);
@@ -86,10 +87,10 @@ implementation
     Writer.Comment(LinieRegister, 'Liniennummer');
     Writer.Comment(UmlaufRegister, 'Umlaufnummer');
     Writer.Comment('Output:');
-    Writer.Comment(KursRegister, 'Kursnummer');
-    Writer.Comment(CodeRegister, 'Destination code');
-    Writer.Comment(BeginnRegister, 'Departure time'); 
-    Writer.Comment(CountRegister, 'Kursanzahl');
+    Writer.Comment(VarKursID, 'Kursnummer');
+    Writer.Comment(CodeVar, 'Destination code');
+    Writer.Comment(DepartureVar, 'Departure time');
+    Writer.Comment(VarKursCount, 'Kursanzahl');
     Writer.BeginMacro(GetKursByDepTime);
     Writer.WriteConst(-1);
     Writer.SaveReg(KursRegister);
@@ -228,13 +229,34 @@ implementation
     end;
   end;
 
+  function Clamp(Value: Integer; Max: Integer): Integer;
+  begin;
+    while(Value >= Max) do
+      Value := Value - Max;
+    while(Value < 0) do
+      Value := Value + Max;
+    Result := Value;
+  end;
+
   procedure TGenGetKursByDepVisitor.FahrtagTreeHelper(Node: specialize TTimetableNode<TAbfahrt>; Tree: specialize TTimetableTree<TKurs>);
+  var
+    Index: Integer;
+    I: Integer;
   begin
+    Index := Tree.IndexOf(Node.GetItem.Kurs);
     Writer.LoadReg(TimeRegister);
     Writer.WriteConst(Node.GetItem.Id);
     Writer.WriteOp('<=');
     Writer.BeginIf;
-    Tree.Find(Node.GetItem.Kurs).Accept(Self);
+
+    Writer.WriteConst(Index);
+    Writer.SaveVar(FloatVar, VarKursID);
+    Writer.NewLine;
+    for I := RangeVarMin to RangeVarMax do
+    begin
+      Iter := I;
+      Tree.GetIndexth(Clamp(Index + Iter, Tree.Count)).Accept(Self)
+    end;
 
     if(Node.Left <> nil) then
     begin
@@ -258,25 +280,31 @@ implementation
 
   procedure TGenGetKursByDepVisitor.Visit(Instance: TKurs);
   begin;
-    Writer.WriteConst(Instance.Id);
-    Writer.SaveReg(KursRegister);
-    Writer.NewLine;
     Writer.WriteConst(Instance.Start);
-    Writer.SaveReg(BeginnRegister);
+    Writer.SaveVar(FloatVar, DepartureVar(Iter));
     Writer.NewLine;
     Writer.WriteConst(Instance.Code);
-    Writer.SaveReg(CodeRegister);
+    Writer.SaveVar(FloatVar, CodeVar(Iter));
     Writer.NewLine;
   end; 
 
   procedure TGenGetKursByDepVisitor.Visit(Instance: TFahrtag);
+  var
+    I: Integer;
   begin;
     if (Instance.Kurse.GetRoot <> nil) then
     begin
       Writer.WriteConst(Instance.Kurse.Count);
-      Writer.SaveReg(CountRegister);
+      Writer.SaveVar(FloatVar, VarKursCount);
       Writer.NewLine;
-      Instance.Kurse.Find(Instance.Abfahrten.GetMin.Kurs).Accept(Self);
+      Writer.WriteConst(0);
+      Writer.SaveVar(FloatVar, VarKursID);
+      Writer.NewLine;
+      for I := RangeVarMin to RangeVarMax do
+      begin
+        Iter := I;
+        Instance.Kurse.GetIndexth(Clamp(Iter, Instance.Kurse.Count)).Accept(Self)
+      end;
       Writer.NewLine;
       FahrtagTreeHelper(Instance.Abfahrten.GetRoot, Instance.Kurse);
     end;
